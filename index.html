@@ -1,32 +1,39 @@
-  <!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Flipkart Style Store</title><style>
+<title>Flipkart Style Store</title>
+
+<style>
 body{margin:0;font-family:Arial;background:#f1f3f6;}
-header{background:#2874f0;color:#fff;padding:12px;display:flex;align-items:center;justify-content:space-between;}
-.logo{font-size:18px;font-weight:bold;}
-.search{width:60%;padding:6px;border:none;border-radius:4px;}
+header{background:#2874f0;color:#fff;padding:10px;display:flex;align-items:center;gap:10px;}
+.logo{font-weight:bold;}
+.search{flex:1;padding:6px;border:none;border-radius:4px;}
 .container{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;padding:10px;}
-.product{background:#fff;border-radius:6px;padding:10px;box-shadow:0 1px 4px rgba(0,0,0,0.1);} 
-.product img{width:100%;height:120px;object-fit:cover;border-radius:5px;}
-.name{font-size:14px;margin:5px 0;height:35px;overflow:hidden;}
-.price{color:#388e3c;font-weight:bold;font-size:14px;}
-.old{color:#999;text-decoration:line-through;font-size:12px;margin-left:5px;}
-.rating{color:#fff;background:#388e3c;font-size:12px;padding:2px 5px;border-radius:3px;display:inline-block;margin:4px 0;}
-button{background:#fb641b;color:#fff;border:none;padding:8px;width:100%;margin-top:8px;border-radius:4px;font-weight:bold;cursor:pointer;font-size:13px;}
-</style></head>
-<body><header>
-  <div class="logo">Flipkart 🛒</div>
-  <input class="search" placeholder="Search for products...">
-</header><div class="container" id="products"></div><script>
-const whatsappNumber = 7397418053"; // CHANGE THIS
+.product{background:#fff;padding:10px;border-radius:6px;}
+.product img{width:100%;height:120px;object-fit:cover;}
+.price{color:green;font-weight:bold;}
+.old{color:#999;text-decoration:line-through;font-size:12px;}
+button{background:#fb641b;color:#fff;border:none;padding:8px;width:100%;margin-top:8px;border-radius:4px;}
+</style>
+
+</head>
+<body>
+
+<header>
+<div class="logo">Christy Stores🛒</div>
+<input class="search" placeholder="Search for products...">
+</header>
+
+<div class="container" id="products"></div>
+
+<script>
+const whatsappNumber = "7397418053"; // CHANGE
 
 const products = [
-  {name:"Wireless Bluetooth Earbuds with Noise Cancellation", price:999, old:1999, rating:"4.3★", img:"https://m.media-amazon.com/images/I/61LtuGzXeaL._SX679_.jpg"},
-  {name:"Smart Watch Full Touch Display Fitness Tracker", price:1499, old:2999, rating:"4.1★", img:"https://m.media-amazon.com/images/I/61IMRs+o0iL._SX679_.jpg"},
-  {name:"Portable Bluetooth Speaker Deep Bass Sound", price:799, old:1599, rating:"4.2★", img:"https://m.media-amazon.com/images/I/71lGx4V7oDL._SX679_.jpg"},
-  {name:"Stylish Mobile Back Cover Shockproof Case", price:199, old:499, rating:"4.0★", img:"https://m.media-amazon.com/images/I/61aX0h1f8DL._SX679_.jpg"}
+  {name:"Wireless Earbuds", price:999, old:1999, img:"https://m.media-amazon.com/images/I/61LtuGzXeaL._SX679_.jpg"},
+  {name:"Smart Watch", price:1499, old:2999, img:"https://m.media-amazon.com/images/I/61IMRs+o0iL._SX679_.jpg"}
 ];
 
 function loadProducts(){
@@ -35,32 +42,21 @@ function loadProducts(){
     box.innerHTML+=`
     <div class="product">
       <img src="${p.img}">
-      <div class="name">${p.name}</div>
-      <div class="rating">${p.rating}</div>
-      <div class="price">₹${p.price}<span class="old">₹${p.old}</span></div>
+      <h4>${p.name}</h4>
+      <div class="price">₹${p.price} <span class="old">₹${p.old}</span></div>
       <button onclick="orderNow('${p.name}',${p.price})">Buy Now</button>
     </div>`;
   });
 }
 
 function orderNow(name,price){
-  const msg = `I want to order ${name} for ₹${price}`;
-  const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`;
+  const msg = "I want to order " + name + " for ₹" + price;
+  const url = "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(msg);
   window.open(url,'_blank');
 }
 
 loadProducts();
-</script></body>
-</html>  </div>`;
-  });
-}
+</script>
 
-function orderNow(name,price){
-  const msg = `I want to order ${name} for ₹${price}`;
-  const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`;
-  window.open(url,'_blank');
-}
-
-loadProducts();
-</script></body>
+</body>
 </html>
