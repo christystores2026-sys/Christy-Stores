@@ -39,8 +39,8 @@ const products = [
 function loadProducts(){
   const box=document.getElementById("products");
   products.forEach(p=>{
-    box.innerHTML+=`
-    <div class="product">
+    box.innerHTML+=`<p style="color:red;font-size:12px;">Only 3 left!</p>
+    <div class="product"><p style="color:green;">50% OFF + Free Delivery</p>
       <img src="${p.img}">
       <h4>${p.name}</h4>
       <div class="price">₹${p.price} <span class="old">₹${p.old}</span></div>
@@ -60,3 +60,4 @@ loadProducts();
 
 </body>
 </html>
+<div style="background:green;color:white;padding:2px 5px;border-radius:3px;display:inline-block;">4.3 ★</div>
