@@ -7,24 +7,103 @@
 
 <style>
 body{margin:0;font-family:Arial;background:#f1f3f6;}
-header{background:#2874f0;color:#fff;padding:10px;display:flex;gap:10px;align-items:center;}
-.logo{font-weight:bold;}
+
+header{
+background:#2874f0;
+color:#fff;
+padding:10px;
+display:flex;
+align-items:center;
+gap:10px;
+}
+.logo{font-weight:bold;font-size:18px;}
 .search{flex:1;padding:6px;border:none;border-radius:4px;}
 
-.banner{background:#ffe500;padding:8px;text-align:center;font-weight:bold;}
+.banner{
+background:#ffe500;
+text-align:center;
+padding:8px;
+font-weight:bold;
+}
 
-.container{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;padding:10px;}
+.container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+gap:10px;
+padding:10px;
+}
 
-.product{background:#fff;padding:10px;border-radius:6px;}
-.product img{width:100%;height:120px;object-fit:cover;}
-.price{color:green;font-weight:bold;}
+.product{
+background:#fff;
+padding:10px;
+border-radius:6px;
+box-shadow:0 1px 4px rgba(0,0,0,0.1);
+}
+
+.product img{
+width:100%;
+height:130px;
+object-fit:cover;
+}
+
+.name{
+font-size:14px;
+height:35px;
+overflow:hidden;
+}
+
+.rating{
+background:#388e3c;
+color:#fff;
+padding:2px 5px;
+font-size:12px;
+border-radius:3px;
+display:inline-block;
+margin:4px 0;
+}
+
+.price{color:#388e3c;font-weight:bold;}
 .old{color:#999;text-decoration:line-through;font-size:12px;}
-.rating{background:green;color:#fff;padding:2px 5px;font-size:12px;border-radius:3px;display:inline-block;margin:4px 0;}
 
-button{background:#fb641b;color:#fff;border:none;padding:8px;width:100%;margin-top:8px;border-radius:4px;}
+.offer{color:green;font-size:12px;}
+.urgent{color:red;font-size:12px;}
 
-form{background:#fff;padding:10px;margin:10px;border-radius:6px;}
-input{width:100%;padding:8px;margin:5px 0;}
+button{
+background:#fb641b;
+color:#fff;
+border:none;
+padding:8px;
+width:100%;
+margin-top:8px;
+border-radius:4px;
+font-weight:bold;
+}
+
+.review{
+font-size:12px;
+color:#555;
+margin-top:5px;
+}
+
+form{
+background:#fff;
+padding:10px;
+margin:10px;
+border-radius:6px;
+}
+
+input{
+width:100%;
+padding:8px;
+margin:5px 0;
+}
+
+footer{
+text-align:center;
+padding:10px;
+font-size:12px;
+color:#777;
+}
 </style>
 </head>
 
@@ -35,63 +114,69 @@ input{width:100%;padding:8px;margin:5px 0;}
 <input class="search" placeholder="Search for products...">
 </header>
 
-<div class="banner">🔥 50% OFF + Free Delivery 🔥</div>
+<div class="banner">🔥 50% OFF + Free Delivery Today 🔥</div>
 
 <div class="container" id="products"></div>
 
 <form id="orderForm">
-<h3>Place Order (COD)</h3>
+<h3>Place Order (Cash on Delivery)</h3>
 <input type="text" id="name" placeholder="Your Name" required>
 <input type="text" id="address" placeholder="Your Address" required>
-<input type="text" id="phone" placeholder="Your Phone" required>
+<input type="text" id="phone" placeholder="Your Phone Number" required>
 <button type="submit">Order Now</button>
 </form>
 
+<footer>
+© 2026 Christy Stores | Trusted Online Shop
+</footer>
+
 <script>
-const whatsappNumber = "919876543210"; // CHANGE THIS
+const whatsappNumber = "919876543210"; // CHANGE YOUR NUMBER
 
 const products = [
-  {
-    name:"Smart Watch Full Touch Display",
-    price:1499,
-    old:2999,
-    rating:"4.3★",
-    img:"https://m.media-amazon.com/images/I/61IMRs+o0iL._SX679_.jpg"
-  }
+{
+name:"Smart Watch Full Touch Display with Fitness Tracker",
+price:1499,
+old:2999,
+rating:"4.3★",
+img:"https://m.media-amazon.com/images/I/61IMRs+o0iL._SX679_.jpg"
+}
 ];
 
 function loadProducts(){
-  const box=document.getElementById("products");
-  products.forEach(p=>{
-    box.innerHTML+=`
-    <div class="product">
-      <img src="${p.img}">
-      <h4>${p.name}</h4>
-      <div class="rating">${p.rating}</div>
-      <div class="price">₹${p.price} <span class="old">₹${p.old}</span></div>
-      <p style="color:red;font-size:12px;">Only 5 left!</p>
-      <button onclick="buyNow('${p.name}',${p.price})">Buy Now</button>
-    </div>`;
-  });
+const box=document.getElementById("products");
+products.forEach(p=>{
+box.innerHTML+=`
+<div class="product">
+<img src="${p.img}">
+<div class="name">${p.name}</div>
+<div class="rating">${p.rating}</div>
+<div class="price">₹${p.price} <span class="old">₹${p.old}</span></div>
+<div class="offer">50% OFF + Free Delivery</div>
+<div class="urgent">Only 5 left in stock!</div>
+<button onclick="buyNow('${p.name}',${p.price})">Buy Now</button>
+<div class="review">"Very good product 👍" - Rahul</div>
+</div>`;
+});
 }
 
 function buyNow(name,price){
-  const msg = "I want to order " + name + " for ₹" + price;
-  window.open("https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(msg));
+const msg = "I want to order " + name + " for ₹" + price;
+window.open("https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(msg));
 }
 
 document.getElementById("orderForm").onsubmit = function(e){
-  e.preventDefault();
-  const name = document.getElementById("name").value;
-  const address = document.getElementById("address").value;
-  const phone = document.getElementById("phone").value;
+e.preventDefault();
+const name = document.getElementById("name").value;
+const address = document.getElementById("address").value;
+const phone = document.getElementById("phone").value;
 
-  const msg = "New Order:\nName: " + name + "\nAddress: " + address + "\nPhone: " + phone;
-  window.open("https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(msg));
+const msg = "New Order:\nName: " + name + "\nAddress: " + address + "\nPhone: " + phone;
+window.open("https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(msg));
 }
 
 loadProducts();
 </script>
 
 </body>
-  </html>
+</html>
